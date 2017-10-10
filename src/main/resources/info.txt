@@ -1,0 +1,7 @@
+有三种启动方式：
+1.在@SpringBootApplication 的类里，直接run即可；
+2.先进入到项目路径，比如该项目就进入到boy路径下就可以了；
+    执行 mvn spring-boot:run 命令即可；（这里也就是为什么在pom文件里，要声明安装spring-boot-maven-plugin  插件的原因）
+3.先进入到项目路径，比如该项目就进入到boy路径下就可以了；
+    执行mvn install 将项目编译 在target目录下就会出现一个xxxx.jar的jar包
+    执行java -jar xxxx.jar即可
