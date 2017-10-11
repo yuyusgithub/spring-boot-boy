@@ -1,5 +1,8 @@
-package com.boy;
+package com.boy.controller;
 
+import com.boy.domain.Boy;
+import com.boy.repository.BoyRepository;
+import com.boy.service.BoyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

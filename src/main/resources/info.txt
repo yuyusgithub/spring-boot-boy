@@ -34,6 +34,7 @@ controller返回模板
 rest 的 曾删改查，见restController
 
 事务机制
+service层的方法上添加 @Transactional 注解
 
 
 

@@ -1,5 +1,6 @@
-package com.boy;
+package com.boy.repository;
 
+import com.boy.domain.Boy;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
