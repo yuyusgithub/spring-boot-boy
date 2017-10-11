@@ -8,12 +8,24 @@
 
 
 配置文件
-resources目录下的application.properties 文件，更推荐使用yml格式的配置文件；一时间只能存在一个配置文件;测试发现，如果两个同事存在的话，只有application.properties会生效
+    resources目录下的application.properties 文件，更推荐使用yml格式的配置文件；一时间只能存在一个配置文件;
+    测试发现，如果两个同事存在的话，只有application.properties会生效
+
+可以通过使用
+    @Value，来将配置文件的中的属性，映射到类的属性中去；也可以使用@Component,@ConfigurationProperties ，将属性直接映射成对象
 
 可以通过
-spring:
-  profiles:
-    active: B 来修改依赖的配置文件，从而达到配置文件切换的效果；
-    也可以使用命令
-    java -jar xxxxx.jar --spring.profiles.active=A  命令来切换配置文件
+    spring:
+      profiles:
+        active: B 来修改依赖的配置文件，从而达到配置文件切换的效果；
+        也可以使用命令
+        java -jar xxxxx.jar --spring.profiles.active=A  命令来切换配置文件
+
+controller返回模板
+    HelloController1 ，中使用了spring一个简单的官方模板解析器thymeleaf，返回一个简单的模板index.html
+    (注！模板一定要在resources下，叫TM什么templates,否则找不到！shit！)；做了解。
+
+    @RequestMapping(value = {"/hello","/hi"}, method = RequestMethod.GET) 可以做到访问hello or hi 都可以；
+    method = RequestMethod.GET 如果不写的话，什么请求方法都可以请求到，但是出于安全性的问题，这种方式是不推荐的；
+
 
