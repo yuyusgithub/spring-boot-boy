@@ -34,7 +34,16 @@ controller返回模板
 rest 的 曾删改查，见restController
 
 事务机制
-service层的方法上添加 @Transactional 注解
+    service层的方法上添加 @Transactional 注解
+
+
+validate表单验证
+    在bean里的字段添加验证注解，比如  @Min(value = 18,message = "未成年人进制入内")
+    在controller的Girl对象前添加 @Valid ，和BindingResult bindingResult  ，验证的错误信息会绑定在该对象中；
+
+AOP 程序设计范式，是一种设计思想，不光只有java有；（AOP，OOP，POP）面向切面，面向对象，面向过程
+
+
 
 
 

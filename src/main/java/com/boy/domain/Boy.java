@@ -3,6 +3,7 @@ package com.boy.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
 
 /**
  * Created by yuyu on 2017/10/11.
@@ -16,7 +17,9 @@ public class Boy {
 
     private String cupSize;
 
+    @Min(value = 18,message = "未成年人进制入内")
     private Integer age;
+
 
     public Boy() {
     }
