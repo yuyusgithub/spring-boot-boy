@@ -14,6 +14,11 @@ public class RestController {
     @Autowired
     private BoyRepository boyRepository;
 
+    @Autowired
+    private BoyService boyService;
+
+
+
     @GetMapping(value = "/boys")
     public List<Boy> getBoy(){
         return boyRepository.findAll();
@@ -46,5 +51,17 @@ public class RestController {
     public void getBoy4(@PathVariable("id") Integer id){
         boyRepository.delete(id);
     }
+
+    @GetMapping(value = "/boys/age/{age}")
+    public List<Boy> getBoy5(@PathVariable("age") Integer age){
+        return boyRepository.findByAge(age);
+    }
+
+    @GetMapping(value = "/saveTwo")
+    public void saveTwo(){
+        boyService.insertTwo();
+    }
+
+
 
 }
