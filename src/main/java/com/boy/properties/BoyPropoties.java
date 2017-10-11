@@ -1,4 +1,4 @@
-package com.boy;
+package com.boy.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
