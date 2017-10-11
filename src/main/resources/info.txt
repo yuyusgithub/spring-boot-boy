@@ -28,4 +28,6 @@ controller返回模板
     @RequestMapping(value = {"/hello","/hi"}, method = RequestMethod.GET) 可以做到访问hello or hi 都可以；
     method = RequestMethod.GET 如果不写的话，什么请求方法都可以请求到，但是出于安全性的问题，这种方式是不推荐的；
 
+如何做到修改代码不用重启，搜索springboot idea 热启动
+
 
