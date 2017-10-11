@@ -2,5 +2,15 @@
 spring:
   profiles:
     active: B
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/dbboy
+    username: root
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+#      create,create-dropy(应用停下来的时候，删除表),none,valadate（验证表和实体是否一致，不一致会报错）,update
+    show-sql: true
 
 
