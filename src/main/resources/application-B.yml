@@ -1,0 +1,10 @@
+server:
+#  服务器端口
+  port: 8081
+#  上下文路径
+  context-path: /boy
+boy:
+  cupSize: BBB
+  age: 18
+  content: ${boy.cupSize},${boy.age}
+

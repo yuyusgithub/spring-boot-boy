@@ -1,5 +1,7 @@
 package com.boy;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,8 +12,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
-    @RequestMapping(value = "/hello" ,method = RequestMethod.GET)
-    public String say(){
-        return "Hello Boy!!";
+    /**
+     * 可以通过@Value 注解，将配置文件里的 字段注入进来
+     */
+    @Value("${boy.cupSize}")
+    private String cupSize;
+
+    @Value("${boy.content}")
+    private String content;
+
+    /**
+     * 将配置文件中的注入到对象中，再注入进来；
+     */
+    @Autowired
+    private BoyPropoties boyPropoties;
+
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    public String say() {
+        return "Hello Boy!!" + "    " +cupSize+":"+content+  "#######" + boyPropoties.getContent();
     }
 }
