@@ -6,7 +6,8 @@
     执行mvn install 将项目编译 在target目录下就会出现一个xxxx.jar的jar包;
     执行java -jar xxxx.jar即可;
 
-
+一点个人感受，不一定正确，spring-boot不要配置什么配置文件，如果想启用一种功能，在pom文件中引入相关的依赖包，只要有了这个依赖包，就会自动启用相关的功能
+从而达到简化配置的目的，而只有一些跟用户相关的，比如用户名密码啥的，才需要在properties.yml里配置一下；
 配置文件
     resources目录下的application.properties 文件，更推荐使用yml格式的配置文件；一时间只能存在一个配置文件;
     测试发现，如果两个同事存在的话，只有application.properties会生效
@@ -42,8 +43,45 @@ validate表单验证
     在controller的Girl对象前添加 @Valid ，和BindingResult bindingResult  ，验证的错误信息会绑定在该对象中；
 
 AOP 程序设计范式，是一种设计思想，不光只有java有；（AOP，OOP，POP）面向切面，面向对象，面向过程
+    springmvc 启动aop的步骤：
+    1.引入依赖包：我也没试过这些包行不行
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aop</artifactId>
+      <version>2.5.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>1.6.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjrt</artifactId>
+      <version>1.6.1</version>
+    </dependency>
+    2.在配置文件中开启 aop功能（还要手动开启，够专业，但是我不喜欢）
+     <!--*************** 支持aop **************** -->
+        <aop:aspectj-autoproxy proxy-target-class="true" />
+    3.实现一个日志切面
 
+        切面首先是IOC容器中的一个bean,即在切面类前加上标签@Component标签
+        切面还需要添加标签@Aspect标签，声明该类是一个切面
+        实现需要的通知，在方法之前添加如下的通知类型：
+        @Before：前置通知，在方法前通知；
+        @After :后置通知，在方法执行后通知；
+        @AfterRunning：返回通知，在方法返回结果之后通知；
+        @AfterThrowing：异常通知，在方法抛出异常之后通知；
+        @Around：环绕通知，围绕着方法执行；
 
+        切入点表达式的书写：
+            execution(* com.cn21.redisCluster.controller.*(..)) :第一个*表示任意的修饰符（public/private/protected）及任意的返回值（void/Object）；第二个*表示任意的方法，‘..’表示任意数量的参数；
+            execution(public * com.cn21.redisCluster.controller.*Controller.*(..))：表示com.cn21.redisCluster.controller包下+以Controller结尾的+公共的方法（public）的方法；
+            execution(public void com.cn21.redisCluster.controller.*Controller.*(..))：表示com.cn21.redisCluster.controller包下+以Controller结尾的+公共的方法（public）+返回类型是void的方法；
+            execution(public void com.cn21.redisCluster.controller.*Controller.*(int,..)):表示com.cn21.redisCluster.controller包下+以Controller结尾+公共的方法（public）+返回类型是void的类+第一个参数是int的方法；
+            execution(public void com.cn21.redisCluster.controller.*Controller.*(int,int)):表示com.cn21.redisCluster.controller包下+以Controller结尾+公共的方法（public）+返回类型是void的类+第一个参数是int+第二个参数是int的方法；
+
+    spring-boot的aop不需要手动去开启什么，可参照ValidateController
 
 
 
